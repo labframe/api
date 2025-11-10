@@ -32,10 +32,10 @@ pip install -e .
 
 ## Running the server
 
-You can run the server from any directory. Just ensure the virtual environment is activated:
-
 ```bash
+cd /Users/dubf/Developer/LabFrame/api
 source ~/Backend/python/venv/thesis/bin/activate
+lsof -ti:8000 | xargs kill -9 2>/dev/null || true
 uvicorn labframe_api.app:app --reload --port 8000 --log-config logging.yaml
 ```
 
@@ -78,6 +78,10 @@ The API is configured with timestamped logging. All requests and server logs inc
 - `POST /projects` - Create a new project
 - `POST /projects/with-template` - Create a project with template cloning
 - `POST /projects/active` - Set the active project
+- `PATCH /projects/{project_name}` — Rename project
+- `DELETE /projects/{project_name}` — Delete project
+- `GET /projects/{project_name}/stats` — Statistics snapshot
+- `GET /projects/details` — All projects with details and stats
 
 ### Events
 - `GET /events/database-changes` - Stream database change notifications via SSE
