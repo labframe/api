@@ -1,0 +1,24 @@
+[project]
+name = "labframe-api"
+version = "0.1.0"
+description = "FastAPI facade exposing LabFrame core services"
+authors = [{ name = "LabFrame" }]
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.112.0,<0.113",
+  "uvicorn[standard]>=0.30.0,<0.31",
+  "pydantic>=2.7,<3",
+  "python-dotenv>=1.0,<2"
+]
+
+[build-system]
+requires = ["setuptools>=67", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["labframe_api*"]
+
